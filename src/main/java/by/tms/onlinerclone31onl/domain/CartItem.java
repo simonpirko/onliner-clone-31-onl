@@ -1,4 +1,4 @@
 package by.tms.onlinerclone31onl.domain;
 
-public class Phone {
+public class CartItem {
 }
