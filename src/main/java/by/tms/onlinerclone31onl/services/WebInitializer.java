@@ -1,4 +1,4 @@
-package by.tms.onlinerclone31onl;
+package by.tms.onlinerclone31onl.services;
 
 import by.tms.onlinerclone31onl.configuration.JdbcConfiguration;
 import by.tms.onlinerclone31onl.configuration.RootConfiguration;

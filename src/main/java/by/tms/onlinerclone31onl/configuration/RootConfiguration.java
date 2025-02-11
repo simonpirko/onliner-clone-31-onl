@@ -1,6 +1,6 @@
 package by.tms.onlinerclone31onl.configuration;
 
-import by.tms.onlinerclone31onl.Constants;
+import by.tms.onlinerclone31onl.services.Constants;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
