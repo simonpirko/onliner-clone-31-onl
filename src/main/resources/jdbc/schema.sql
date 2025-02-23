@@ -9,5 +9,3 @@ CREATE TABLE IF NOT EXISTS account
     phone       VARCHAR(30) unique,
     role        VARCHAR(30)
 );
-
-CREATE EXTENSION pgcrypto;
