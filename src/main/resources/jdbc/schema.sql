@@ -5,9 +5,10 @@ create table if not exists accounts
     id       uuid default gen_random_uuid() not null
         constraint accounts_pk
             primary key,
+    username varchar                        not null,
     password text                           not null,
     phone    varchar                        not null,
-    photo    varchar,
+    photo    text,
     role     integer                        not null
 );
 
