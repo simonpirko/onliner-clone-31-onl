@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Sidebar</title>
+  <style>
+    .sidebar {
+      height: 100vh; /* Высота боковой панели */
+      width: 15%; /* Ширина боковой панели */
+      overflow-y: auto;
+      background-color: #b46dff; /* Цвет фона */
+      color: #ffffff; /* Цвет текста */
+      padding: 10px; /* Отступы */
+      font-family: Gill Sans, sans-serif; /* Шрифт */
+      line-height: 2; /* Высота строки */
+    }
+
+    .sidebar a {
+      color: #ffffff; /* Цвет текста ссылок */
+      padding: 10px; /* Отступы для ссылок */
+      text-decoration: none; /* Убираем подчеркивание */
+      font-size: 1.3em; /* Размер шрифта для ссылок */
+    }
+
+    .sidebar a:hover {
+      background-color: #9b41ff; /* Цвет фона при наведении */
+      padding: 10px; /* Отступы при наведении */
+    }
+
+    .sidebar .nav {
+      display: flex; /* Отображение как flex-контейнер */
+      flex-direction: column; /* Вертикальное расположение элементов */
+    }
+
+  </style>
+</head>
+<body>
+  <nav class="sidebar p-3">
+    <div class="container-fluid">
+    <h2>Меню</h2>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/}" href="#">Главная</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/catalog}" href="#">Каталог</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/account}" href="#">Мой аккаунт</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/cart}" href="#">Корзина</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/settings}" href="#">Настройки</a>
+      </li>
+    </ul>
+    </div>
+  </nav>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
