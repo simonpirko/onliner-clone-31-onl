@@ -23,7 +23,7 @@ public class AccountDAO implements DataAccessObject<Account> {
 
     @Override
     public void save(Account entity) {
-        jdbcTemplate.update("INSERT INTO account VALUES (default,?,?,crypt(?, gen_salt('md5')),?,?)", entity.getUsername(), entity.getLogin(),
+        jdbcTemplate.update("INSERT INTO accounts VALUES (default,?,crypt(?, gen_salt('md5')),?,?)", entity.getUsername(),
                 entity.getPassword(), entity.getPhone(), entity.getRole().name().toUpperCase());
     }
 
@@ -44,22 +44,22 @@ public class AccountDAO implements DataAccessObject<Account> {
 
     @Override
     public List<Account> findAll() {
-        return jdbcTemplate.query("SELECT * FROM account", rowMapper);
+        return jdbcTemplate.query("SELECT * FROM accounts", rowMapper);
     }
 
     @Override
     public Optional<Account> findByID(String id) {
-        return Optional.ofNullable(jdbcTemplate.queryForObject("SELECT * FROM account WHERE id=?", rowMapper, id));
+        return Optional.ofNullable(jdbcTemplate.queryForObject("SELECT * FROM accounts WHERE id=?", rowMapper, id));
     }
 
     @Override
     public Optional<Account> findByPhone(String phone) {
-        return Optional.ofNullable(jdbcTemplate.queryForObject("SELECT * FROM account WHERE phone=?", rowMapper, phone));
+        return Optional.ofNullable(jdbcTemplate.queryForObject("SELECT * FROM accounts WHERE phone=?", rowMapper, phone));
     }
 
     public Optional<Account> findByPhoneAndPassword(String phone, String password) {
         try {
-            return Optional.ofNullable(jdbcTemplate.queryForObject("SELECT * FROM account WHERE phone = ? AND password = crypt(?, password)", rowMapper, phone, password));
+            return Optional.ofNullable(jdbcTemplate.queryForObject("SELECT * FROM accounts WHERE phone = ? AND password = crypt(?, password)", rowMapper, phone, password));
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
         }
