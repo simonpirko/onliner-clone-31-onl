@@ -15,5 +15,4 @@ public interface DataAccessObject<T> {
     List<T> findAll();
 
     Optional<T> findByID(String id);
-    Optional<T> findByPhone(String phone);
 }

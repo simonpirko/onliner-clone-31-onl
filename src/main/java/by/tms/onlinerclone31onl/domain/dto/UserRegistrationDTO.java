@@ -16,9 +16,6 @@ public class UserRegistrationDTO {
     @NotNull
     private String username;
     @NotBlank
-    @NotNull
-    private String login;
-    @NotBlank
     private String password;
     @NotBlank
     @Pattern(message = "Неверный формат номера телефона", regexp = "^\\+375\\(\\d{2}\\)\\d{3}-\\d{2}-\\d{2}$")
