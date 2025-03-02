@@ -50,6 +50,6 @@ public class ProductDAO implements DataAccessObject<Product> {
 
     @Override
     public Optional<Product> findByID(String id) {
-        return Optional.ofNullable( jdbcTemplate.queryForObject("SELECT * FROM product WHERE product.productid=?", rowMapper, id));
+        return Optional.ofNullable( jdbcTemplate.queryForObject("SELECT * FROM product WHERE product.id=?", rowMapper, id));
     }
 }

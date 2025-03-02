@@ -9,6 +9,6 @@ import lombok.*;
 @ToString
 public class ProductImages {
     private String id;
-    private String photo;
+    private String path;
     private Product product;
 }

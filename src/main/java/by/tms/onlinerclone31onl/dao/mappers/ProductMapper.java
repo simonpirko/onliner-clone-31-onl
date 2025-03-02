@@ -21,14 +21,14 @@ public class ProductMapper implements RowMapper<Product> {
     @Override
     public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
         Product product = new Product();
-        product.setProductId(rs.getString("productId"));
+        product.setProductId(rs.getString("id"));
         product.setName(rs.getString("name"));
         product.setDescription(rs.getString("description"));
-        product.setCharacteristic(rs.getString("characteristic"));
+        product.setCharacteristic(rs.getString("characteristics"));
         product.setYear(rs.getInt("year"));
-        Category category = categoryDAO.findByID(rs.getString("id_category")).get();
+        Category category = categoryDAO.findByID(rs.getString("category_id")).get();
         product.setCategory(category);
-        Manufacturer manufacturer = manufacturerDAO.findByID(rs.getString("id_manufacturer")).get();
+        Manufacturer manufacturer = manufacturerDAO.findByID(rs.getString("manufacturer_id")).get();
         product.setManufacturer(manufacturer);
 
         return product;

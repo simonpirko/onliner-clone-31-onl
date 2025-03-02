@@ -14,7 +14,7 @@ import lombok.ToString;
 @ToString
 public class UserLoginDTO {
     @NotBlank
-    @Pattern(message = "Неверный формат номера телефона", regexp = "^\\+375\\(\\d{2}\\)\\d{3}-\\d{2}-\\d{2}$")
+//    @Pattern(message = "Неверный формат номера телефона", regexp = "^\\+375\\(\\d{2}\\)\\d{3}-\\d{2}-\\d{2}$")
     private String phone;
     @NotNull
     @NotBlank

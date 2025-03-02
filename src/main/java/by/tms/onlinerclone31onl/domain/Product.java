@@ -17,5 +17,4 @@ public class Product {
     private Integer year;
     private Category category;
     private Manufacturer manufacturer;
-
 }
