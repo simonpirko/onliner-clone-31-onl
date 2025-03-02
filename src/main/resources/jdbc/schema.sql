@@ -8,8 +8,8 @@ create table if not exists accounts
     username varchar                        not null,
     password text                           not null,
     phone    varchar                        not null,
-    photo    text,
-    role     integer                        not null
+    role     varchar                        not null,
+    photo    text
 );
 
 create table if not exists manufacturers
