@@ -59,5 +59,11 @@ public class AccountController {
             return "login";
         }
     }
+
+    @GetMapping("/profile")
+    public String index(@ModelAttribute("userRegistrationDTO") UserRegistrationDTO userRegistrationDTO) {
+        return "personal_account";
+    }
+
 }
 
