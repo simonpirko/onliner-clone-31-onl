@@ -12,8 +12,9 @@ public class ManufacturerMapper implements RowMapper<Manufacturer> {
     @Override
     public Manufacturer mapRow(ResultSet rs, int rowNum) throws SQLException {
         Manufacturer manufacturer = new Manufacturer();
-        manufacturer.setId(rs.getString("id"));
+        manufacturer.setId(rs.getLong("id"));
         manufacturer.setName(rs.getString("name"));
+        manufacturer.setDescription(rs.getString("description"));
         return manufacturer;
     }
 }

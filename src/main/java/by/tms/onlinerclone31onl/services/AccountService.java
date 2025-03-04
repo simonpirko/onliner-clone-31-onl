@@ -24,6 +24,7 @@ public class AccountService {
         account.setUsername(userRegistrationDTO.getUsername());
         account.setPassword(userRegistrationDTO.getPassword());
         account.setPhone(userRegistrationDTO.getPhone());
+        account.setPhoto(userRegistrationDTO.getPhoto());
         account.setRole(Account.Role.USER);
         accountDAO.save(account);
     }

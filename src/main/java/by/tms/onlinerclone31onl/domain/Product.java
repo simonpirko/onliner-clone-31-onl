@@ -3,6 +3,9 @@ package by.tms.onlinerclone31onl.domain;
 
 import lombok.*;
 
+
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -10,12 +13,12 @@ import lombok.*;
 @ToString
 public class Product {
 
-    private String productId;
+    private Long productId;
     private String name;
     private String description;
     private String characteristic;
     private Integer year;
     private Category category;
     private Manufacturer manufacturer;
-
+    private List<String> images;
 }
