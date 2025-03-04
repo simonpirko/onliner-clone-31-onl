@@ -12,6 +12,16 @@ create table if not exists accounts
     role     integer                        not null
 );
 
+create table if not exists users
+(
+    id       uuid default gen_random_uuid() not null
+    constraint users_pk
+    primary key,
+    username varchar                        not null,
+    phone    varchar                        not null,
+    role     integer                        not null
+    );
+
 create table if not exists manufacturers
 (
     id          uuid default gen_random_uuid() not null
