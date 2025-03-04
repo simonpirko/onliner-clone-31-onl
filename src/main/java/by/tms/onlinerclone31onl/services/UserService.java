@@ -6,9 +6,5 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    @Autowired
-    public UserDTO getUser(String id){
-        UserDTO user = new UserDTO();
 
-    }
 }
