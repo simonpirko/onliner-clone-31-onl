@@ -8,9 +8,8 @@ import lombok.*;
 @Builder
 @ToString
 public class UserDTO {
-    private Account account;
-    private String firstName;
-    private String lastName;
+    private String id;
+    private String username;
     private String phoneNumber;
     private String role;
 }
