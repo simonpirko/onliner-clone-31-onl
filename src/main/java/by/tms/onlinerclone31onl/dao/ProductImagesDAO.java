@@ -48,7 +48,12 @@ public class ProductImagesDAO implements DataAccessObject<ProductImages> {
     }
 
     @Override
-    public Optional<ProductImages> findByID(String id) {
+    public Optional<ProductImages> findByID(Long id) {
         return Optional.empty();
+    }
+
+
+    public List<String> findByIDAll(Long productId) {
+    return jdbcTemplate.queryForList("SELECT path FROM productimages WHERE product_id = ?", String.class, productId);
     }
 }

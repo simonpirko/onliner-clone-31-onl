@@ -8,7 +8,7 @@ import lombok.*;
 @Builder
 @ToString
 public class ProductImages {
-    private String id;
+    private Long id;
     private String path;
     private Product product;
 }

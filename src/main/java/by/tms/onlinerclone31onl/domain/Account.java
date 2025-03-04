@@ -9,7 +9,7 @@ import lombok.*;
 @ToString
 public class Account {
 
-    private String id;
+    private Long id;
     private String username;
     private String password;
     private String phone;

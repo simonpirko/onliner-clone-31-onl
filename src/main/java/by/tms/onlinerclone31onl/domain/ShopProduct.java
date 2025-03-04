@@ -8,7 +8,7 @@ import lombok.*;
 @Builder
 @ToString
 public class ShopProduct {
-    private String id;
+    private Long id;
     private Double price;
     private Integer status;
     private Shop shop;

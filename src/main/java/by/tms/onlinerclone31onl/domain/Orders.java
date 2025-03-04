@@ -8,7 +8,7 @@ import lombok.*;
 @Builder
 @ToString
 public class Orders {
-    private String id;
+    private Long id;
     private Integer status;
     private String description;
     private String address;

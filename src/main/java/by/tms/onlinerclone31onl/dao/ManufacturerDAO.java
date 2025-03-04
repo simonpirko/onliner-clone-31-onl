@@ -47,7 +47,7 @@ public class ManufacturerDAO implements DataAccessObject<Manufacturer> {
     }
 
     @Override
-    public Optional<Manufacturer> findByID(String id) {
+    public Optional<Manufacturer> findByID(Long id) {
         return Optional.ofNullable(jdbcTemplate.queryForObject("SELECT * FROM manufacturer WHERE id = ?",
                 rowMapper, id));
     }

@@ -9,7 +9,7 @@ import lombok.*;
 @ToString
 public class Manufacturer {
 
-    private String id;
+    private Long id;
     private String name;
     private String description;
 }

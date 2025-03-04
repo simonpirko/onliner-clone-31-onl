@@ -48,7 +48,7 @@ public class ShopDAO implements DataAccessObject<Shop> {
     }
 
     @Override
-    public Optional<Shop> findByID(String id) {
+    public Optional<Shop> findByID(Long id) {
         return Optional.empty();
     }
 }

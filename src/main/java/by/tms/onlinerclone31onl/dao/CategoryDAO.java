@@ -46,7 +46,7 @@ public class CategoryDAO implements DataAccessObject<Category> {
     }
 
     @Override
-    public Optional<Category> findByID(String id) {
+    public Optional<Category> findByID(Long id) {
         return Optional.ofNullable(jdbcTemplate.queryForObject("SELECT * FROM category WHERE id = ?",
                 rowMapper, id));
     }

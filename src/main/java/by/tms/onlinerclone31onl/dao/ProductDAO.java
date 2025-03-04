@@ -49,7 +49,11 @@ public class ProductDAO implements DataAccessObject<Product> {
     }
 
     @Override
-    public Optional<Product> findByID(String id) {
-        return Optional.ofNullable( jdbcTemplate.queryForObject("SELECT * FROM product WHERE product.id=?", rowMapper, id));
+    public Optional<Product> findByID(Long id) {
+        return Optional.ofNullable( jdbcTemplate.queryForObject("SELECT * FROM product WHERE id=?", rowMapper, id));
+    }
+
+    public Optional<Product> findAllByID(Long id) {
+        return Optional.ofNullable( jdbcTemplate.queryForObject("SELECT * FROM product WHERE id =?", rowMapper, id));
     }
 }

@@ -2,7 +2,6 @@ package by.tms.onlinerclone31onl.dao;
 
 import by.tms.onlinerclone31onl.dao.mappers.ShopProductMapper;
 import by.tms.onlinerclone31onl.domain.Shop;
-import by.tms.onlinerclone31onl.domain.dto.ShopProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -14,6 +13,7 @@ import java.util.Optional;
 @Component
 public class ShopProductDAO implements DataAccessObject<Shop> {
     private final JdbcTemplate jdbcTemplate;
+    @Autowired
     private final ShopProductMapper rowMapper;
 
     @Autowired
@@ -49,11 +49,11 @@ public class ShopProductDAO implements DataAccessObject<Shop> {
     }
 
     @Override
-    public Optional<Shop> findByID(String id) {
+    public Optional<Shop> findByID(Long id) {
         return Optional.empty();
     }
 
-    public List<Map<String, Object>> findAllByIdProduct(String productId) {
+    public List<Map<String, Object>> findAllByIdProduct(Long productId) {
         return jdbcTemplate.queryForList("select * from shopproduct where product_id = ?", productId);
     }
 }
