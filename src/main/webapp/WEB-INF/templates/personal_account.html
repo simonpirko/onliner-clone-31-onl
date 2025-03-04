@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,15 +20,15 @@
         <div class="col-md-9">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Добро пожаловать, Иван Иванов!</h5>
+                    <h5 class="card-title" th:text="'Добро пожаловать, ' + ${username} + '!'"></h5>
                     <p class="card-text">Здесь вы можете управлять своим профилем и настройками.</p>
                     <hr>
                     <h6>Информация о пользователе:</h6>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Имя:</strong> Иван Иванов</li>
-                        <li class="list-group-item"><strong>Роль:</strong> ivan.ivanov@example.com</li>
-                        <li class="list-group-item"><strong>Телефон:</strong> +375 29 123-45-67</li>
-                        <li class="list-group-item"><strong>ID:</strong> 01.01.2023</li>
+                        <li class="list-group-item"><strong>Имя:</strong> <span th:text="${username}"></span></li>
+                        <li class="list-group-item"><strong>Телефон:</strong> <span th:text="${phone}"></span></li>
+                        <li class="list-group-item"><strong>Роль:</strong> <span th:text="${role}"></span></li>
+                        <li class="list-group-item"><strong>ID:</strong> <span th:text="${ID}"></span></li>
                     </ul>
                 </div>
             </div>
@@ -41,3 +41,4 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+

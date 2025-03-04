@@ -71,6 +71,10 @@ public class AccountController {
     @GetMapping("/profile")
     public String index(HttpSession session, Model model) {
         Account account = (Account) session.getAttribute("currentUser");
+
+        if (account == null)
+            return "redirect:/login";
+
         UserDTO userDto = userService.createUser(account.getId());
 
         model.addAttribute("username",userDto.getUsername());
@@ -101,6 +105,5 @@ public class AccountController {
         accountDAO.update(account.getId(), account);
         return "redirect:/profile";
     }
-
 }
 
