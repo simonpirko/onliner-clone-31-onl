@@ -49,6 +49,6 @@ public class ShopDAO implements DataAccessObject<Shop> {
 
     @Override
     public Optional<Shop> findByID(Long id) {
-        return Optional.empty();
+        return Optional.ofNullable(jdbcTemplate.queryForObject("SELECT * FROM shop WHERE id=?",rowMapper, id));
     }
 }

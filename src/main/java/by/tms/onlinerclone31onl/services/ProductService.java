@@ -41,7 +41,6 @@ public class ProductService {
         Long shop_id = (Long) map.get("shop_id");
         productShopDTO.setId(shop_id);
         productShopDTO.setShopName(shopDAO.findByID(shop_id).orElseThrow(() -> new RuntimeException("Shop not found")).getName());
-
         productShopDTO.setPrice(Double.valueOf(map.get("price").toString()));
         productShopDTO.setStatus(Integer.parseInt(map.get("status").toString()));
 
