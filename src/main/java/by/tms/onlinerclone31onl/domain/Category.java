@@ -1,5 +1,6 @@
 package by.tms.onlinerclone31onl.domain;
 
+
 import lombok.*;
 
 @Data
@@ -7,10 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @ToString
-public class ShopProduct {
+public class Category {
     private Long id;
-    private Double price;
-    private Integer status;
-    private Shop shop;
-    private Product product;
+    private String name;
 }

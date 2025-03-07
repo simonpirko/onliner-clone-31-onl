@@ -22,9 +22,9 @@ public class AccountService {
     public void registration (UserRegistrationDTO userRegistrationDTO) {
         Account account = new Account();
         account.setUsername(userRegistrationDTO.getUsername());
-        account.setLogin(userRegistrationDTO.getLogin());
         account.setPassword(userRegistrationDTO.getPassword());
         account.setPhone(userRegistrationDTO.getPhone());
+        account.setPhoto(userRegistrationDTO.getPhoto());
         account.setRole(Account.Role.USER);
         accountDAO.save(account);
     }

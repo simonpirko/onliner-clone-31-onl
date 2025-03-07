@@ -48,7 +48,7 @@ public class AccountController {
            return "registration";
         }
         accountService.registration(userRegistrationDTO);
-        return "redirect:/";
+        return "/catalog";
     }
 
     @GetMapping("/login")
@@ -61,7 +61,7 @@ public class AccountController {
         if(accountService.login(loginDTO)){
             Account account = accountDAO.findByPhone(loginDTO.getPhone()).get();
             session.setAttribute("currentUser", account);
-            return "/home";
+            return "/catalog";
         } else {
             model.addAttribute("WrongPhoneOrPassword", "Неверный номер телефона или пароль");
             return "login";

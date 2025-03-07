@@ -7,10 +7,11 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @ToString
-public class ShopProduct {
+public class Orders {
     private Long id;
-    private Double price;
     private Integer status;
+    private String description;
+    private String address;
+    private Account account;
     private Shop shop;
-    private Product product;
 }

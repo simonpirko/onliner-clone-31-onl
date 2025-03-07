@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Интернет-магазин</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+  .sidebar {
+    position: fixed;
+    height: 100%;
+    padding-top: 20px;
+    width: 280px;
+    background-color: #ab79e8;
+    color: #ffffff;
+    font-family: Gill Sans, sans-serif;
+    line-height: 2;
+  }
+  .sidebar a {
+    color: #ffffff;
+    padding-top: 20px;
+    text-decoration: none;
+    font-size: 1.3em;
+  }
+  .sidebar a:hover {
+    background-color: #9b41ff;
+    padding-top: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" th:href="@{/}">
+              Главная
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/catalog}">
+              Каталог
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/account}">
+              Мой аккаунт
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/cart}">
+              Корзина
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/settings}">
+              Настройки
+            </a>
+          </li>
+        </ul>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>О нас</span>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/about}">
+              Узнать больше
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
