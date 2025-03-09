@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Интернет-магазин</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+  .card {
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div th:insert="sidebar.html"></div>
+
+<div class="container-fluid">
+  <div class="row">
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <h1 class="mt-4">Товар</h1>
+      <div class="card mb-4">
+        <img src="path/to/product-image.jpg" class="card-img-top" alt="Товар">
+        <div class="card-body">
+          <h5 class="card-title">Название товара</h5>
+          <p class="card-text">Описание товара: Здесь вы можете найти лучшее предложение на рынке. Отличное качество и цена!</p>
+          <p class="card-text"><strong>Цена: 999 Руб.</strong></p>
+          <button type="button" class="btn btn-primary">Добавить в корзину</button>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

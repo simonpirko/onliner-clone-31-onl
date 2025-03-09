@@ -1,14 +1,24 @@
 package by.tms.onlinerclone31onl.domain;
 
-import lombok.Getter;
 
+import lombok.*;
+
+
+import java.util.List;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@ToString
 public class Product {
-    @Getter
-    private long id;
+
+    private Long productId;
     private String name;
     private String description;
-    @Getter
-    private double price;
-
-
+    private String characteristic;
+    private Integer year;
+    private Category category;
+    private Manufacturer manufacturer;
+    private List<String> images;
 }
