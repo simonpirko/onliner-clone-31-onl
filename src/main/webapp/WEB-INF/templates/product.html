@@ -7,14 +7,24 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
   img {
-    display: block;
     height: 400px;
     max-width: 100%;
     justify-content: center;
     justify-items: center;
   }
-
-
+  p, ul{
+    font-family: Gill Sans, sans-serif;
+    font-size: 20px;
+  }
+  .carousel-control-prev,
+  .carousel-control-next {
+    filter: invert(1);
+  }
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: black;
+    border-radius: 50%;
+  }
 </style>
 </head>
 <body>
@@ -22,24 +32,24 @@
 
 <div class="container-fluid">
   <div class="row">
-    <main role="main" class="col-md-7 ml-sm-auto col-lg-8 px-4">
+    <main role="main" class="col-md-8 ml-sm-auto col-lg-8 px-4" style="margin-left: 400px !important;">
       <div class="row">
         <div class="col-md-4">
-          <div id="carouselExampleControls" class="carousel slide mt-5" data-ride="carousel" style="justify-content: center;">
+          <div id="carouselExampleControls" class="carousel slide mt-5" data-ride="carousel">
             <div class="carousel-inner">
-              <div class="carousel-item active">
+              <div class="carousel-item active text-center" style="justify-content: center">
                 <img th:src="${productDTO.getProduct.getImages.get(0)}" alt="...">
               </div>
-              <div class="carousel-item">
+              <div class="carousel-item text-center">
                 <img th:src="${productDTO.getProduct.getImages.get(1)}" alt="...">
               </div>
-              <div class="carousel-item">
+              <div class="carousel-item text-center">
                 <img th:src="${productDTO.getProduct.getImages.get(2)}" alt="...">
               </div>
-              <div class="carousel-item">
+              <div class="carousel-item text-center">
                 <img th:src="${productDTO.getProduct.getImages.get(3)}" alt="...">
               </div>
-              <div class="carousel-item">
+              <div class="carousel-item text-center">
                 <img th:src="${productDTO.getProduct.getImages.get(4)}" alt="...">
               </div>
             </div>
@@ -54,10 +64,10 @@
           </div>
         </div>
         <div class="col-md-8">
-          <h5 class="mt-5">
+          <p class="mt-5" style="font-size: 24px; padding-left: 20px; font-weight: 600">
             <span th:text="*{productDTO.getProduct.getManufacturer.getName}"></span>
             <span th:text="*{productDTO.getProduct.getName}"></span>
-          </h5>
+          </p>
           <div class="card-body">
             <p>
               <span class="card-text" th:text="'Описание товара: ' + *{productDTO.getProduct.getDescription}"></span>
@@ -76,7 +86,13 @@
                 <td th:text="${shop.getPrice + ' byn'}"></td>
               </li>
             </ul>
-            <button type="button" class="btn btn-primary">Добавить в корзину</button>
+
+            <form action="/cart" method="post">
+              <input type="hidden" th:value="*{productDTO.getProduct.getProductId}" name="idProduct"/>
+              <input type="hidden" th:value="*{shop.getId}" name="idShop"/>
+                <input type="hidden" th:value="${session.currentUser.getId}" name="idAccount"/>
+                <button type="button" class="btn btn-primary btn-lg" style="font-family: Gill Sans, sans-serif">Добавить в корзину</button>
+            </form>
           </div>
         </div>
       </div>
