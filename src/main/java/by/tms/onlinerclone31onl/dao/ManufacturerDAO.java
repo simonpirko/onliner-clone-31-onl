@@ -32,12 +32,12 @@ public class ManufacturerDAO implements DataAccessObject<Manufacturer> {
     }
 
     @Override
-    public void deleteById(String id) {
+    public void deleteById(Long id) {
 
     }
 
     @Override
-    public void update(String id, Manufacturer entity) {
+    public void update(Long id, Manufacturer entity) {
 
     }
 

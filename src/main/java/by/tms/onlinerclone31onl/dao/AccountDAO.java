@@ -33,12 +33,12 @@ public class AccountDAO implements DataAccessObject<Account> {
     }
 
     @Override
-    public void deleteById(String id) {
+    public void deleteById(Long id) {
 
     }
 
     @Override
-    public void update(String id, Account entity) {
+    public void update(Long id, Account entity) {
 
     }
 

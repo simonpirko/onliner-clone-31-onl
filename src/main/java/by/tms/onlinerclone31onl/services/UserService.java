@@ -11,7 +11,7 @@ public class UserService {
 @Autowired
 UserDAO userDAO;
 
-public UserDTO createUser(String id) {
+public UserDTO createUser(Long id) {
     Account user = userDAO.findByID(id).get();
 
     UserDTO userDto = new UserDTO();

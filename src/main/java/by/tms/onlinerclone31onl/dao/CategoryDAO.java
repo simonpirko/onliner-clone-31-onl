@@ -31,12 +31,12 @@ public class CategoryDAO implements DataAccessObject<Category> {
     }
 
     @Override
-    public void deleteById(String id) {
+    public void deleteById(Long id) {
 
     }
 
     @Override
-    public void update(String id, Category entity) {
+    public void update(Long id, Category entity) {
 
     }
 

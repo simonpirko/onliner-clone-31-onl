@@ -12,7 +12,9 @@
 
 </head>
 <body>
-<div class="container mt-5">
+
+<div th:insert="sidebar.html"></div>
+<div class="container">
     <h1 class="mb-4">Корзина</h1>
 
     <div th:if="${#lists.isEmpty(cartItems)}">
@@ -31,10 +33,10 @@
             </thead>
             <tbody>
             <tr th:each="item : ${cartItems}">
-                <td th:text="${item.product.name}"></td>
-                <td th:text="${item.product.price} + ' руб.'"></td>
+                <td th:text="${item.shopProduct.product.name}"></td>
+                <td th:text="${item.shopProduct.price} + ' руб.'"></td>
                 <td>
-                    <form th:action="@{/cart/update/{id}(id=${item.product.id})}" method="post">
+                    <form th:action="@{/cart/update/{id}(id=${item.shopProduct.product.id})}" method="post">
                         <input type="number" name="quantity" th:value="${item.quantity}" min="1" class="form-control w-25 d-inline">
                         <button type="submit" class="btn btn-sm btn-secondary">Обновить</button>
                     </form>

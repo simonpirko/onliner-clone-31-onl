@@ -8,9 +8,9 @@ public interface DataAccessObject<T> {
 
     void delete(T entity);
 
-    void deleteById(String id);
+    void deleteById(Long id);
 
-    void update(String id, T entity);
+    void update(Long id, T entity);
 
     List<T> findAll();
 

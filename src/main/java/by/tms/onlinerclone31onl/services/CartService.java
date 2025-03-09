@@ -10,13 +10,13 @@ import java.util.Map;
 
 @Service
 public class CartService {
-  private final Map<Long, OrderDetails> cart = new HashMap<>();
+    private final Map<Long, OrderDetails> cart = new HashMap<>();
 
-  public void addToCart(Product product) {
-      cart.compute((long) product.getId(), (id, cartItem) ->
-              cartItem == null ? new OrderDetails(product, 1) :
-                      new OrderDetails(product, cartItem.getQuantity() + 1 ));
-  }
+    public void addToCart(Product product) {
+        cart.compute(product.getProductId(), (id, cartItem) ->
+                cartItem == null ? new OrderDetails(product, 1) :
+                        new OrderDetails(product, cartItem.getQuantity() + 1));
+    }
 
     public void removeFromCart(Long productId) {
         cart.remove(productId);
@@ -37,8 +37,6 @@ public class CartService {
     }
 
     public double getTotalPrice() {
-        return cart.values().stream().mapToDouble(item -> item.getProduct().getPrice() * item.getQuantity()).sum();
+        return cart.values().stream().mapToDouble(item -> item.getPrice() * item.getQuantity()).sum();
     }
-
-
 }

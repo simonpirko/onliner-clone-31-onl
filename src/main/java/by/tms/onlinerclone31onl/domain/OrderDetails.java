@@ -12,4 +12,10 @@ public class OrderDetails {
     private Double price;
     private Orders order;
     private ShopProduct shopProduct;
+    private Integer quantity;
+
+    public OrderDetails(Product product, Integer quantity) {
+        this.shopProduct = ShopProduct.builder().product(product).build();
+        this.quantity = quantity;
+    }
 }

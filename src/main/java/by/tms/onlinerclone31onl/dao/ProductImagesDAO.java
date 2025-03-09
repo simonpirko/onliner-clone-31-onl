@@ -33,12 +33,12 @@ public class ProductImagesDAO implements DataAccessObject<ProductImages> {
     }
 
     @Override
-    public void deleteById(String id) {
+    public void deleteById(Long id) {
 
     }
 
     @Override
-    public void update(String id, ProductImages entity) {
+    public void update(Long id, ProductImages entity) {
 
     }
 

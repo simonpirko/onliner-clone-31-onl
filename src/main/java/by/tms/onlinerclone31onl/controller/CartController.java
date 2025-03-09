@@ -26,7 +26,7 @@ public class CartController {
         return "cart";
     }
 
-    @PostMapping("/ass/{id}")
+    @PostMapping("/add/{id}")
     public String addToCart(@PathVariable Long id, Model model) {
         Product product = productService.getProductById(id);
         if (product != null) {

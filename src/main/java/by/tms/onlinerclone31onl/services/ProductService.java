@@ -38,11 +38,6 @@ public class ProductService {
         productDTO.setShopProductsDTOList(productShopDTOList);
 
         return productDTO;
-    public Product getProductById(Long id) {
-        return products.stream()
-                .filter(product -> Objects.equals(product.getId(), id))
-                .findFirst()
-                .orElse(null);
     }
 
     private ShopProductDTO mapToProductShopDTO(Map<String, Object> map) {
@@ -55,9 +50,16 @@ public class ProductService {
         productShopDTO.setStatus(Integer.parseInt(map.get("status").toString()));
 
         return productShopDTO;
+    }
+
+    public Product getProductById(Long id) {
+        return products.stream()
+                .filter(product -> Objects.equals(product.getProductId(), id))
+                .findFirst()
+                .orElse(null);
+    }
+
     public List<Product> getAllProducts() {
         return products;
     }
-
-
 }
