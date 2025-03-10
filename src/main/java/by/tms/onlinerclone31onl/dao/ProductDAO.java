@@ -34,12 +34,12 @@ public class ProductDAO implements DataAccessObject<Product> {
     }
 
     @Override
-    public void deleteById(String id) {
+    public void deleteById(Long id) {
 
     }
 
     @Override
-    public void update(String id, Product entity) {
+    public void update(Long id, Product entity) {
 
     }
 

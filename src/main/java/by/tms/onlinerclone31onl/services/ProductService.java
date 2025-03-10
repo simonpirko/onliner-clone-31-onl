@@ -4,14 +4,18 @@ import by.tms.onlinerclone31onl.dao.*;
 import by.tms.onlinerclone31onl.domain.dto.ProductDTO;
 import by.tms.onlinerclone31onl.domain.dto.ShopProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import by.tms.onlinerclone31onl.domain.Product;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.Objects;
 
 @Service
 public class ProductService {
+    private final List<Product> products = new ArrayList<>();
 
     @Autowired
     private ProductDAO productDAO;
@@ -47,5 +51,14 @@ public class ProductService {
         return productShopDTO;
     }
 
+    public Product getProductById(Long id) {
+        return products.stream()
+                .filter(product -> Objects.equals(product.getProductId(), id))
+                .findFirst()
+                .orElse(null);
+    }
 
+    public List<Product> getAllProducts() {
+        return products;
+    }
 }
