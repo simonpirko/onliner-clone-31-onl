@@ -1,21 +1,40 @@
 package by.tms.onlinerclone31onl.services;
 
+import by.tms.onlinerclone31onl.dao.AccountDAO;
+import by.tms.onlinerclone31onl.dao.ProductDAO;
+import by.tms.onlinerclone31onl.dao.ShopDAO;
+import by.tms.onlinerclone31onl.dao.ShopProductDAO;
+import by.tms.onlinerclone31onl.domain.Cart;
+import by.tms.onlinerclone31onl.domain.CartItem;
 import by.tms.onlinerclone31onl.domain.OrderDetails;
 import by.tms.onlinerclone31onl.domain.Product;
+import by.tms.onlinerclone31onl.domain.dto.CartDTO;
+import by.tms.onlinerclone31onl.domain.dto.ProductDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 @Service
 public class CartService {
     private final Map<Long, OrderDetails> cart = new HashMap<>();
+    @Autowired
+    private AccountDAO accountDAO;
+    @Autowired
+    private ShopProductDAO shopProductDAO;
 
-    public void addToCart(Product product) {
-        cart.compute(product.getProductId(), (id, cartItem) ->
-                cartItem == null ? new OrderDetails(product, 1) :
-                        new OrderDetails(product, cartItem.getQuantity() + 1));
+    public Cart addProductToCart(CartDTO cartDTO) {
+        Cart cart = cartDTO.getCart();
+        cart.setAccount(accountDAO.findByID(cartDTO.getAccountID()).orElseThrow(() -> new RuntimeException("Account not found")));
+        if (cart.getCartItems() == null) {
+            cart.setCartItems(new ArrayList<>());
+        }
+        cart.getCartItems().add(new CartItem(shopProductDAO.findByProductIDAndShopID(cartDTO.getProductID(), cartDTO.getShopID())
+                .orElseThrow(() -> new RuntimeException("Product not found"))));
+        return cart;
     }
 
     public void removeFromCart(Long productId) {

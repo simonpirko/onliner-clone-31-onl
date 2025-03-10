@@ -32,17 +32,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="item : ${cartItems}">
-                <td th:text="${item.shopProduct.product.name}"></td>
-                <td th:text="${item.shopProduct.price} + ' руб.'"></td>
+            <tr th:each="item : ${session.cart.getCartItems}">
+                <td th:text="${item.getShopProduct().getProduct().getName()}"></td>
+                <td th:text="${item.getShopProduct().getPrice()} + ' руб.'"></td>
                 <td>
-                    <form th:action="@{/cart/update/{id}(id=${item.shopProduct.product.id})}" method="post">
-                        <input type="number" name="quantity" th:value="${item.quantity}" min="1" class="form-control w-25 d-inline">
-                        <button type="submit" class="btn btn-sm btn-secondary">Обновить</button>
-                    </form>
-                </td>
-                <td>
-                    <form th:action="@{/cart/remove/{id}(id=${item.product.id})}" method="post">
+                    <form th:action="@{/cart/delete}" method="post">
+                        <input type="hidden" th:value="*{item.getShopProduct().getId()}" name="itemID"/>
                         <button type="submit" class="btn btn-sm btn-danger">Удалить</button>
                     </form>
                 </td>
