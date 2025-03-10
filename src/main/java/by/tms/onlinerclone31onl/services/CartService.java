@@ -1,15 +1,11 @@
 package by.tms.onlinerclone31onl.services;
 
 import by.tms.onlinerclone31onl.dao.AccountDAO;
-import by.tms.onlinerclone31onl.dao.ProductDAO;
-import by.tms.onlinerclone31onl.dao.ShopDAO;
 import by.tms.onlinerclone31onl.dao.ShopProductDAO;
 import by.tms.onlinerclone31onl.domain.Cart;
 import by.tms.onlinerclone31onl.domain.CartItem;
 import by.tms.onlinerclone31onl.domain.OrderDetails;
-import by.tms.onlinerclone31onl.domain.Product;
 import by.tms.onlinerclone31onl.domain.dto.CartDTO;
-import by.tms.onlinerclone31onl.domain.dto.ProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

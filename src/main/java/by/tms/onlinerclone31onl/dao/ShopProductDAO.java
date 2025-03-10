@@ -1,7 +1,6 @@
 package by.tms.onlinerclone31onl.dao;
 
 import by.tms.onlinerclone31onl.dao.mappers.ShopProductMapper;
-import by.tms.onlinerclone31onl.domain.Shop;
 import by.tms.onlinerclone31onl.domain.ShopProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
