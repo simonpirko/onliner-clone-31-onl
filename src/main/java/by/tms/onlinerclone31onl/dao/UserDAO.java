@@ -38,7 +38,7 @@ public class UserDAO implements DataAccessObject<Account> {
 
     @Override
     public void update(Long id, Account entity) {
-        jdbcTemplate.update("UPDATE account SET id = ?,username = ?,phone = ?, role = ? WHERE id = ?",entity.getId(),entity.getUsername(),entity.getPhone(),entity.getRole(),id);
+        jdbcTemplate.update("UPDATE account SET username = ?,phone = ?, password = crypt(?, gen_salt('md5'))  WHERE id = ?",entity.getUsername(),entity.getPhone(), entity.getPassword(), id);
     }
 
     @Override

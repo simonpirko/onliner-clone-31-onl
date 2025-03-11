@@ -39,7 +39,7 @@ public class AccountDAO implements DataAccessObject<Account> {
 
     @Override
     public void update(Long id, Account entity) {
-
+        jdbcTemplate.update("UPDATE account SET username = ?, phone = ?, role = ? WHERE id = ?", entity.getUsername(), entity.getPhoto(), entity.getRole().name().toUpperCase(), id);
     }
 
     @Override

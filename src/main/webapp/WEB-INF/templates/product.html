@@ -1,106 +1,119 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Интернет-магазин</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<style>
-  img {
-    height: 400px;
-    max-width: 100%;
-    justify-content: center;
-    justify-items: center;
-  }
-  p, ul{
-    font-family: Gill Sans, sans-serif;
-    font-size: 20px;
-  }
-  .carousel-control-prev,
-  .carousel-control-next {
-    filter: invert(1);
-  }
-  .carousel-control-prev-icon,
-  .carousel-control-next-icon {
-    background-color: black;
-    border-radius: 50%;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Интернет-магазин</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        img {
+            height: 400px;
+            max-width: 100%;
+            justify-content: center;
+            justify-items: center;
+        }
+
+        p, ul {
+            font-family: Gill Sans, sans-serif;
+            font-size: 20px;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            filter: invert(1);
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: black;
+            border-radius: 50%;
+        }
+    </style>
 </head>
 <body>
 <div th:insert="sidebar.html"></div>
 
 <div class="container-fluid">
-  <div class="row">
-    <main role="main" class="col-md-8 ml-sm-auto col-lg-8 px-4" style="margin-left: 400px !important;">
-      <div class="row">
-        <div class="col-md-4">
-          <div id="carouselExampleControls" class="carousel slide mt-5" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active text-center" style="justify-content: center">
-                <img th:src="${productDTO.getProduct.getImages.get(0)}" alt="...">
-              </div>
-              <div class="carousel-item text-center">
-                <img th:src="${productDTO.getProduct.getImages.get(1)}" alt="...">
-              </div>
-              <div class="carousel-item text-center">
-                <img th:src="${productDTO.getProduct.getImages.get(2)}" alt="...">
-              </div>
-              <div class="carousel-item text-center">
-                <img th:src="${productDTO.getProduct.getImages.get(3)}" alt="...">
-              </div>
-              <div class="carousel-item text-center">
-                <img th:src="${productDTO.getProduct.getImages.get(4)}" alt="...">
-              </div>
+    <div class="row">
+        <main role="main" class="col-md-8 ml-sm-auto col-lg-8 px-4" style="margin-left: 400px !important;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div id="carouselExampleControls" class="carousel slide mt-5" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active text-center" style="justify-content: center">
+                                <img th:src="${productDTO.getProduct.getImages.get(0)}" alt="...">
+                            </div>
+                            <div class="carousel-item text-center">
+                                <img th:src="${productDTO.getProduct.getImages.get(1)}" alt="...">
+                            </div>
+                            <div class="carousel-item text-center">
+                                <img th:src="${productDTO.getProduct.getImages.get(2)}" alt="...">
+                            </div>
+                            <div class="carousel-item text-center">
+                                <img th:src="${productDTO.getProduct.getImages.get(3)}" alt="...">
+                            </div>
+                            <div class="carousel-item text-center">
+                                <img th:src="${productDTO.getProduct.getImages.get(4)}" alt="...">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                           data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                           data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <p class="mt-5" style="font-size: 24px; padding-left: 20px; font-weight: 600">
+                        <span th:text="*{productDTO.getProduct.getManufacturer.getName}"></span>
+                        <span th:text="*{productDTO.getProduct.getName}"></span>
+                    </p>
+                    <div class="card-body">
+                        <p>
+                            <span class="card-text"
+                                  th:text="'Описание товара: ' + *{productDTO.getProduct.getDescription}"></span>
+                        </p>
+                        <p>
+                            <span class="card-text"
+                                  th:text="'Характеристики товара: ' + *{productDTO.getProduct.getCharacteristic}"></span>
+                        </p>
+                        <p>
+                            <span class="card-text" th:text="'Год выпуска: ' + *{productDTO.getProduct.getYear}"></span>
+                        </p>
+                        <ul th:each="shop : ${productDTO.getShopProductsDTOList}" style="padding-left: 0">
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div>
+                                    <td th:text="${shop.getShopName}"></td>
+                                </div>
+                                <td th:text="${shop.getPrice + ' byn'}"></td>
+
+                                <form th:action="@{/cart}" method="post">
+                                    <input type="hidden" th:value="*{productDTO.getProduct.getProductId}" name="productID"/>
+                                    <input type="hidden" th:value="*{shop.getId}" name="shopID"/>
+                                    <div th:if="${session.currentUser == null}">
+                                        <input type="hidden" th:value="null" name="idAccount"/>
+                                    </div>
+                                    <div th:if="${session.currentUser != null}">
+                                    <input type="hidden" th:value="${session.currentUser.getId()}" name="accountID"/>
+                                    <button type="submit" class="btn btn-primary btn-lg"
+                                            style="font-family: Gill Sans, sans-serif">Добавить в корзину
+                                    </button>
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-8">
-          <p class="mt-5" style="font-size: 24px; padding-left: 20px; font-weight: 600">
-            <span th:text="*{productDTO.getProduct.getManufacturer.getName}"></span>
-            <span th:text="*{productDTO.getProduct.getName}"></span>
-          </p>
-          <div class="card-body">
-            <p>
-              <span class="card-text" th:text="'Описание товара: ' + *{productDTO.getProduct.getDescription}"></span>
-            </p>
-            <p>
-              <span class="card-text" th:text="'Характеристики товара: ' + *{productDTO.getProduct.getCharacteristic}"></span>
-            </p>
-            <p>
-              <span class="card-text" th:text="'Год выпуска: ' + *{productDTO.getProduct.getYear}"></span>
-            </p>
-            <ul th:each="shop : ${productDTO.getShopProductsDTOList}" style="padding-left: 0">
-              <li class="list-group-item d-flex justify-content-between align-items-start">
-                  <div>
-                    <td th:text="${shop.getShopName}"></td>
-                  </div>
-                <td th:text="${shop.getPrice + ' byn'}"></td>
-              </li>
-            </ul>
-
-            <form action="/cart" method="post">
-              <input type="hidden" th:value="*{productDTO.getProduct.getProductId}" name="idProduct"/>
-              <input type="hidden" th:value="*{shop.getId}" name="idShop"/>
-                <input type="hidden" th:value="${session.currentUser.getId}" name="idAccount"/>
-                <button type="button" class="btn btn-primary btn-lg" style="font-family: Gill Sans, sans-serif">Добавить в корзину</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </main>
-  </div>
+        </main>
+    </div>
 </div>
-
-
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>

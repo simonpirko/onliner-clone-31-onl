@@ -7,17 +7,11 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container mt-5">
+<div th:insert="sidebar.html"></div>
+
+<div class="container">
     <div class="row">
-        <div class="col-md-3">
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action active">Профиль</a>
-                <a href="#" class="list-group-item list-group-item-action">Настройки</a>
-                <a href="#" class="list-group-item list-group-item-action">Корзина</a>
-                <a href="#" class="list-group-item list-group-item-action">Выход</a>
-            </div>
-        </div>
-        <div class="col-md-9">
+        <div class="col-md-9 mt-5">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title" th:text="'Добро пожаловать, ' + ${username} + '!'"></h5>
@@ -30,6 +24,22 @@
                         <li class="list-group-item"><strong>Роль:</strong> <span th:text="${role}"></span></li>
                         <li class="list-group-item"><strong>ID:</strong> <span th:text="${ID}"></span></li>
                     </ul>
+                    <h6>Изменение данных:</h6>
+                    <form th:action="@{/profile}" method="post">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Имя</label>
+                            <input type="text" id="name" name="username" class="form-control" th:value="${username}" >
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Телефон</label>
+                            <input type="text" id="phone" name="phone" class="form-control" th:value="${phone}" >
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Пароль</label>
+                            <input type="text" id="password" name="password" class="form-control" th:value="${password}" >
+                        </div>
+                        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                    </form>
                 </div>
             </div>
         </div>
