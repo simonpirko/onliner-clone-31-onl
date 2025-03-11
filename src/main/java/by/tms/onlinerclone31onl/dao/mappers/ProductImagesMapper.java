@@ -12,8 +12,6 @@ import java.sql.SQLException;
 
 @Component
 public class ProductImagesMapper implements RowMapper<ProductImages> {
-
-
     private ProductDAO productDAO;
     @Override
     public ProductImages mapRow(ResultSet rs, int rowNum) throws SQLException {

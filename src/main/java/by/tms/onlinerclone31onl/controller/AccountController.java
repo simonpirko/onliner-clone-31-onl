@@ -48,7 +48,7 @@ public class AccountController {
            return "registration";
         }
         accountService.registration(userRegistrationDTO);
-        return "/catalog";
+        return "catalog";
     }
 
     @GetMapping("/login")
@@ -61,7 +61,7 @@ public class AccountController {
         if(accountService.login(loginDTO)){
             Account account = accountDAO.findByPhone(loginDTO.getPhone()).get();
             session.setAttribute("currentUser", account);
-            return "/catalog";
+            return "redirect:/profile";
         } else {
             model.addAttribute("WrongPhoneOrPassword", "Неверный номер телефона или пароль");
             return "login";
@@ -84,8 +84,7 @@ public class AccountController {
     @PostMapping("/profile")
     public String registration(@RequestParam("username") String newUsername,
                                @RequestParam("phone") String newPhone,
-                               @RequestParam("role") String role,
-                               @RequestParam("ID") String id,
+                               @RequestParam("password") String newPassword,
                                HttpSession session) {
 
         Account account = (Account) session.getAttribute("currentUser");
@@ -93,14 +92,10 @@ public class AccountController {
 
         user.setUsername(newUsername);
         user.setPhone(newPhone);
-        user.setRole(Account.Role.valueOf(role));
+        user.setPassword(newPassword);
 
         userDAO.update(account.getId(), user);
-
-        account.setRole(Account.Role.valueOf(role));
-        accountDAO.update(account.getId(), account);
         return "redirect:/profile";
     }
-
 }
 
