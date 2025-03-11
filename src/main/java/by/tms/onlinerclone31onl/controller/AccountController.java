@@ -48,7 +48,7 @@ public class AccountController {
            return "registration";
         }
         accountService.registration(userRegistrationDTO);
-        return "catalog";
+        return "redirect:/login";
     }
 
     @GetMapping("/login")
